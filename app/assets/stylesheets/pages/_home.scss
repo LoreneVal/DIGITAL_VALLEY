@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+.back-video {
+  position: relative;
+  background-color: rgb(70, 70, 70);
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1, p {
+    color: white;
+  }
+}
