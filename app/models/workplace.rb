@@ -7,7 +7,7 @@ class Workplace < ApplicationRecord
   validates :location, presence: true
   validates :area, presence: true
   validates :category, presence: true
-  mount_uploader :picture, PhotoUploader
-  geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+  #mount_uploader :picture, PhotoUploader
+  #geocoded_by :location
+  #after_validation :geocode, if: :will_save_change_to_location?
 end

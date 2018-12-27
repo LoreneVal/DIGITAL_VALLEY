@@ -1,7 +1,11 @@
 <div class="back-video">
   <div class="banner-content">
     <h1>Welcome to Digital Valley</h1>
-    <p>Productivity, comfort, and belongings, everywhere you go</p>
+    <p>Productivity, comfort, and belongings, everywhere you from</p>
+    <%= simple_form_for "area", url: workplaces_path, method: 'get' do |f| %>
+        <%= f.input :area, collection: @areas, prompt: :translate %>
+        <%= f.submit "search", class: 'btn btn-primary form-group' %>
+    <% end %>
   </div>
 </div>
 

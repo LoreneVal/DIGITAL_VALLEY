@@ -4,8 +4,8 @@ class Booking < ApplicationRecord
   belongs_to :freeuser
   belongs_to :premiumuser
   validates :owner_id, presence: true
-  validates :workplace_id
+  validates :workplace_id, presence: true
   validates :freeuser_id, presence: { if: -> { premiumuser_id.blank? } }
   validates :premiumuser_id, presence: { if: -> { freeuser_id.blank? } }
 end
-end
+
