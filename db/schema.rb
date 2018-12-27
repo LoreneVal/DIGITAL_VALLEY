@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_231626) do
+ActiveRecord::Schema.define(version: 2018_12_27_113656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "rate"
+    t.text "review"
+    t.integer "freeuser_id"
+    t.integer "premiumuser_id"
+    t.integer "owner_id"
+    t.bigint "workplace_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workplace_id"], name: "index_bookings_on_workplace_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +35,33 @@ ActiveRecord::Schema.define(version: 2018_12_25_231626) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "name"
+    t.string "type"
+    t.string "passion"
+    t.string "business"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workplaces", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.text "description"
+    t.string "amenities"
+    t.string "area"
+    t.string "location"
+    t.integer "desk_price"
+    t.integer "bed_price"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "picture"
+    t.string "keyword"
+    t.integer "owner_id"
+    t.integer "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "bookings", "workplaces"
 end
